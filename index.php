@@ -1,12 +1,3 @@
-<?php 
-	session_start(); 
-	$_SESSION["name"] = $_POST["name"];
-	$_SESSION["numExperience"] = 0;
-	$_SESSION["numInvolvement"] = 0;
-	$_SESSION["numSkills"] = 0;
-	
-?>
-
 <!--
 	ROAST is made with love, coffee, and Bootstrap by Andrew Kerr
 		He can be found @andrewuf
@@ -19,8 +10,8 @@
 	Blonde Roast can be found at https://github.com/andrewjkerr/blonde-roast
 	And at http://www.andrewjkerr.com/roast/blonde/.
 
-	This file was created in VERSION 0.1.
-	This file was updated last in VERSION 0.1.
+	This file was created in VERSION 1.0.
+	This file was updated last in VERSION 1.0.
 	
 	Big changes in this version:
 		- Fixed small bugs.
@@ -31,7 +22,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Blonde Roast | VERSION A.1</title>
+    <title>Blonde Roast | A Static Resume Page Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -49,6 +40,7 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     
+	<link href="favicon.ico" rel="icon" type="image/x-icon" />
     
   </head>
 
@@ -62,13 +54,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand">Blonde Roast</a>
+          <a class="brand">Blonde Roast | A Static Resume Page Generator</a>
         </div>
       </div>
     </div>
 
     <div class="container">
 		<form action="roast-gen.php" method="post">
+			<p><h3>Name: <input type="text" name="name" id="name" onkeyup='setName();'/></h3></p>
+			
 			<!-- Education form start -->
 			
 			<script type="text/javascript">
@@ -78,7 +72,7 @@
 						"<p>University: <input type='text' name='university" + numEducationForms + "'/></p>" +
 						"<p>Degree name: <input type='text' name='degreeName" + numEducationForms + "'/></p>" +
 						"<p>Graduation date: <input type='text' name='gradDate" + numEducationForms + "'/></p>" +
-						"<p>GPA: <input type='text' name='gpa" + numEducationForms + "'/></p>";
+						"<p>GPA: <input type='text' name='gpa" + numEducationForms + "'/></p><br>";
 						
 			$(document).ready(function(){
 				$("#eduAdd").click(function(){
@@ -104,10 +98,10 @@
 			
 			<div id="eduForms">
 				<p><h3><u>EDUCATION INFORMATION</u></h3></p>
+				<div id="eduAdd"><p><code>Add Education Form</code></div>
+				<div id="eduSub"><code>Remove Education Form</code></p></div>
 			</div>
-			<div id="eduAdd"><p><code>Add Education Form</code></div>
-			<div id="eduSub"><code>Remove Education Form</code></p></div>
-			<p><input type='text' id='numEduForms' value='0' readonly /></p>
+			<p><input type='hidden' name='numEduForms' id='numEduForms' /></p>
 			<!-- Education form end -->
 			
 			<br />
@@ -116,7 +110,7 @@
 			<!-- Involvement form start -->
 			
 			<script type="text/javascript">
-			// This controls the organization forms
+			// This controls the involvement forms
 			var numOrgForms = 0;
 			var orgForm = 
 				'<p>Organization: <input type="text" name="title' + numOrgForms + '"/></p>' +
@@ -149,39 +143,98 @@
 			
 			<div id = "orgForms">
 				<p><h3><u>INVOLVEMENT INFORMATION</u></h3></p>
+				<div id="orgAdd"><p><code>Add Involvement Form</code></div>
+				<div id="orgSub"><code>Remove Involvement Form</code></p></div>
 			</div>
-			<div id="orgAdd"><p><code>Add Involvement Form</code></div>
-			<div id="orgSub"><code>Remove Involvement Form</code></p></div>
-			<p><input type='text' id='numOrgForms' value='0' readonly /></p>
+			<p><input type='hidden' name='numInvolvement' id='numOrgForms' value='0' readonly /></p>
 			<!-- Involvement form end -->
 			
 			<br />
 			<hr />
 			
 			<!-- Experience form start -->
-			<p><h3><u>EXPERIENCE INFORMATION</u></h3></p>
-			<?php
-			for($i = 0; $i < $_POST["numExperience"]; $i++){
-				echo '<p><u>Experience #' . $i . '</u></p>';
-				echo '<p>Company: <input type="text" name="extitle' . $i . '"/></p>';
-				echo '<p>Position: <input type="text" name="exposition' . $i . '"/></p>';
-				echo '<p>Date: <input type="text" name="exdate' . $i . '"/></p>';
-				echo '<p>Description: <input type="text" style="width: 500px; height:200px" name="exdescription' . $i . '" value="<li>[INSERT ONE LINE OF DESCRIPTION HERE]</li>" /></p>';
-			}
-			$_SESSION["numExperience"] = $_POST["numExperience"];
-			?>
+			
+			<script type="text/javascript">
+			// This controls the experience forms
+			var numExForms = 0;
+			var exForm = 
+				'<p>Company: <input type="text" name="extitle' + numExForms + '"/></p>' +
+				'<p>Position: <input type="text" name="exposition' + numExForms + '"/></p>' +
+				'<p>Date: <input type="text" name="exdate' + numExForms + '"/></p>' +
+				'<p>Description: <input type="text" style="width: 500px; height:200px" name="exdescription' + numExForms + '" value="<li>[INSERT ONE LINE OF DESCRIPTION HERE]</li>" /></p>';
+				
+			$(document).ready(function(){
+				$("#exAdd").click(function(){
+					$("#exForms").append('<div id="exForm' + numExForms + '">' + exForm +'</div>');
+					numExForms++;
+					document.getElementById('numExForms').value = numExForms;
+				})
+			});
+
+			$(document).ready(function(){
+				$("#exSub").click(function(){
+					if(numExForms == 0){
+						alert("There are already zero experience forms!");
+					}
+					else{
+						numExForms--;
+						$("#exForm" + numExForms).remove();
+						document.getElementById('numExForms').value = numExForms;
+					}
+				})
+			});
+			
+			</script>
+			
+			<div id = "exForms">
+				<p><h3><u>EXPERIENCE INFORMATION</u></h3></p>
+				<div id="exAdd"><p><code>Add Experience Form</code></div>
+				<div id="exSub"><code>Remove Experience Form</code></p></div>
+			</div>
+			<p><input type='hidden' name='numExperience' id='numExForms' value='0' readonly /></p>
+	
 			<!-- Experience form end -->
 			<br />
 			<hr />
 			
 			<!-- Skills form start -->
-			<p><h3><u>SKILLS INFORMATION</u></h3></p>
-			<?php
-			for($i = 0; $i < $_POST["numSkills"]; $i++){
-				echo '<p><input type="text" style="width:500px" name="skill' . $i . '"/></p>';
-			}
-			$_SESSION["numSkills"] = $_POST["numSkills"];
-			?>
+			
+			<script type="text/javascript">
+			// This controls the experience forms
+			var numSkillForms = 0;
+			var skillForm = 
+				'<p><input type="text" style="width:500px" name="skill' + numSkillForms + '"/></p>';
+				
+			$(document).ready(function(){
+				$("#skillAdd").click(function(){
+					$("#skillForms").append('<div id="skillForm' + numSkillForms + '">' + skillForm +'</div>');
+					numSkillForms++;
+					document.getElementById('numSkillForms').value = numSkillForms;
+				})
+			});
+
+			$(document).ready(function(){
+				$("#skillSub").click(function(){
+					if(numSkillForms == 0){
+						alert("There are already zero skill forms!");
+					}
+					else{
+						numSkillForms--;
+						$("#skillForm" + numSkillForms).remove();
+						document.getElementById('numSkillForms').value = numSkillForms;
+					}
+				})
+			});
+			
+			</script>
+			
+			<div id = "skillForms">
+				<p><h3><u>SKILLS INFORMATION</u></h3></p>
+				<div id="skillAdd"><p><code>Add Skill Form</code></div>
+				<div id="skillSub"><code>Remove Skill Form</code></p></div>
+			</div>
+			<p><input type='hidden' name='numSkills' id='numSkillForms' value='0' readonly /></p>
+
 			<!-- Skills form end -->
 			<br />
 			

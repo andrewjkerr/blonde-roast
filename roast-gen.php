@@ -15,14 +15,14 @@
 	This file was updated last in VERSION 1.0.
 	
 	Big changes in this version:
-		- Switched from relying on PHP to generate the forms to using jQuery :)
+		- Switched from relying on session variables to just using post since there was only one form page
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
    	 	<meta charset="utf-8">
-		<title>Blonde Roast | Web Resume Generator</title>
+		<title><?php echo $_POST["name"]; ?> | Resume</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="description" content="">
 	    <meta name="author" content="">
@@ -36,6 +36,8 @@
 	      }
 	    </style>
 	    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		
+		<link href="favicon.ico" rel="icon" type="image/x-icon" />
 	</head>
 
 	<body>
@@ -47,7 +49,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="brand" href="index.html"> <?php echo $_SESSION["name"]; ?> </a>
+					<a class="brand" href="index.html"> <?php echo $_POST["name"]; ?> </a>
 				</div>
 			</div>
 		</div>
@@ -61,7 +63,7 @@
 			<div class="row">
 				<div class="span12"><h3>EDUCATION</h3>
 					<?php
-					for($i = 0; $i < $_SESSION["numEducation"]; $i++){
+					for($i = 0; $i < $_POST['numEduForms']; $i++){
 						$degreeName = "degreeName" . $i;
 						$gradDate = "gradDate" . $i;
 						$university = "university" . $i;
@@ -91,7 +93,7 @@
 			<div class = "row">
 				<div class="span12"><h3>INVOLVEMENT</h3>
 					<?php
-					for($i = 0; $i < $_SESSION["numInvolvement"]; $i++){
+					for($i = 0; $i < $_POST["numInvolvement"]; $i++){
 						$title = "title" . $i;
 						$position = "position" . $i;
 						$date = "date" . $i;
@@ -115,7 +117,7 @@
 			<div class = "row">
 				<div class="span12"><h3>EXPERIENCE</h3>
 					<?php
-					for($i = 0; $i < $_SESSION["numExperience"]; $i++){
+					for($i = 0; $i < $_POST["numExperience"]; $i++){
 						$title = "extitle" . $i;
 						$position = "exposition" . $i;
 						$date = "exdate" . $i;
@@ -142,7 +144,7 @@
 						<div class="span10 offset1">
 							<ul>
 							<?php
-							for($i = 0; $i < $_SESSION["numSkills"]; $i++){
+							for($i = 0; $i < $_POST["numSkills"]; $i++){
 								$skill = "skill" . $i;
 								echo '<li>' . $_POST[$skill] . '</li>';
 								echo "\n";
@@ -158,7 +160,7 @@
 			
 			
 			<footer>
-				<p>&copy; <?php echo $_SESSION["name"]; ?> 2013 | Made with Roast.</p>
+				<p>&copy; <?php echo $_POST["name"]; ?> 2013 | Made with <a href="http://www.andrewjkerr.com/roast">Roast.</a></p>
 			</footer>
 
 			<?php
@@ -169,6 +171,7 @@
 			
 			<div class="row">
 				<div class="span12"><h1>Like what you see? Here's the code:</h1>
+					<p><em>Please remember to download <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and place it in <code>/bootstrap</code> folder</em></p>
 					<p>
 						<form>
 							<xmp>

@@ -5,7 +5,7 @@ Blonde Roast is the open sourced versions of Roast. You can find Blonde Roast at
 
 *What is Roast?*
 ----------------
-Roast is a static page generator made for resumes that uses (Boostrap)[http://twitter.github.io/bootstrap/] to make it easy for edits later on. Blonde Roast is the open sourced generator while Roast (WIP) is closed source and allows users to log in and edit their information.
+Roast is a static page generator made for resumes that uses [Boostrap](http://twitter.github.io/bootstrap/) to make it easy for edits later on. Blonde Roast is the open sourced generator while Roast (WIP) is closed source and allows users to log in and edit their information.
 	
 *What do I need for Roast?*
 ---------------------------

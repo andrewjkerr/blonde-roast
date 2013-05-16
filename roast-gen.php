@@ -12,18 +12,17 @@
 	And at http://www.andrewjkerr.com/roast/blonde/.
 
 	This file was created in VERSION A.1.
-	This file was updated last in VERSION A.1.
+	This file was updated last in VERSION 1.0.
 	
 	Big changes in this version:
-		- Oh look, I've made something.
-		- No, serious, this is the first version so there's a lot of big changes (or none, depending on how you look at it.)
+		- Switched from relying on PHP to generate the forms to using jQuery :)
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
    	 	<meta charset="utf-8">
-		<title><?php echo $_SESSION["name"]; ?></title>
+		<title>Blonde Roast | Web Resume Generator</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="description" content="">
 	    <meta name="author" content="">

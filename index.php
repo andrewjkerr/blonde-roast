@@ -34,6 +34,35 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
+	  
+	  form    {
+		  background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
+		  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+		  margin:auto;
+		  position:relative;
+		  font-size: 14px;
+		  line-height: 24px;
+		  text-decoration: none;
+		  -webkit-border-radius: 10px;
+		  -moz-border-radius: 10px;
+		  border-radius: 10px;
+		  padding:10px;
+		  border: 1px solid #999;
+		  border: inset 1px solid #333;
+		  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	  }
+	  
+	  input    {
+		  width:500px;
+		  display:block;
+		  border: 1px solid #999;
+		  height: 25px;
+		  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	  }
     </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -69,10 +98,10 @@
 			// This controls the education forms
 			var numEducationForms = 0;
 			var educationForm =
-						"<p>University: <input type='text' name='university" + numEducationForms + "'/></p>" +
-						"<p>Degree name: <input type='text' name='degreeName" + numEducationForms + "'/></p>" +
-						"<p>Graduation date: <input type='text' name='gradDate" + numEducationForms + "'/></p>" +
-						"<p>GPA: <input type='text' name='gpa" + numEducationForms + "'/></p><br>";
+						"<p>University: <p><input type='text' name='university" + numEducationForms + "'/></p>" +
+						"<p>Degree name: <p><input type='text' name='degreeName" + numEducationForms + "'/></p>" +
+						"<p>Graduation date: <p><input type='text' name='gradDate" + numEducationForms + "'/></p>" +
+						"<p>GPA: <p><input type='text' name='gpa" + numEducationForms + "'/></p><br>";
 						
 			$(document).ready(function(){
 				$("#eduAdd").click(function(){
@@ -113,10 +142,10 @@
 			// This controls the involvement forms
 			var numOrgForms = 0;
 			var orgForm = 
-				'<p>Organization: <input type="text" name="title' + numOrgForms + '"/></p>' +
-				'<p>Position: <input type="text" name="position' + numOrgForms + '"/></p>' +
-				'<p>Date: <input type="text" name="date' + numOrgForms + '"/></p>' +
-				'<p>Description: <input type="text" style="width: 500px; height:200px" name="description' + numOrgForms + '" value="<li>[INSERT ONE LINE OF DESCRIPTION HERE]</li>" /></p>';
+				'<p>Organization: <p><input type="text" name="title' + numOrgForms + '"/></p>' +
+				'<p>Position: <p><input type="text" name="position' + numOrgForms + '"/></p>' +
+				'<p>Date: <p><input type="text" name="date' + numOrgForms + '"/></p>' +
+				'<p>Description: <p><input type="text" style="width: 500px; height:200px" name="description' + numOrgForms + '" value="<li>[INSERT ONE LINE OF DESCRIPTION HERE]</li>" /></p>';
 				
 			$(document).ready(function(){
 				$("#orgAdd").click(function(){
@@ -158,10 +187,10 @@
 			// This controls the experience forms
 			var numExForms = 0;
 			var exForm = 
-				'<p>Company: <input type="text" name="extitle' + numExForms + '"/></p>' +
-				'<p>Position: <input type="text" name="exposition' + numExForms + '"/></p>' +
-				'<p>Date: <input type="text" name="exdate' + numExForms + '"/></p>' +
-				'<p>Description: <input type="text" style="width: 500px; height:200px" name="exdescription' + numExForms + '" value="<li>[INSERT ONE LINE OF DESCRIPTION HERE]</li>" /></p>';
+				'<p>Company: <p><input type="text" name="extitle' + numExForms + '"/></p>' +
+				'<p>Position: <p><input type="text" name="exposition' + numExForms + '"/></p>' +
+				'<p>Date: <p><input type="text" name="exdate' + numExForms + '"/></p>' +
+				'<p>Description: <p><input type="text" style="width: 500px; height:200px" name="exdescription' + numExForms + '" value="<li>[INSERT ONE LINE OF DESCRIPTION HERE]</li>" /></p>';
 				
 			$(document).ready(function(){
 				$("#exAdd").click(function(){

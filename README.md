@@ -1,7 +1,9 @@
 **BLONDE ROAST**
 ================
 
-Blonde Roast is the open sourced versions of Roast. You can find Blonde Roast at http://www.andrewjkerr.com/roast/blonde. You can see an example output (with modifications) at http://cise.ufl.edu/~akerr.
+Blonde Roast is the open sourced versions of Roast. You can find Blonde Roast at http://www.andrewjkerr.com/roast/blonde.
+
+UPDATE: One of the latest versions of Bootstrap seemed to have broken things. It looks like the function still works, but the actual design is a bit wonky. Hopefully I'll have some time to update it soon.
 
 *What is Roast?*
 ----------------
